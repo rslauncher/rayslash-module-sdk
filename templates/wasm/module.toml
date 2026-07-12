@@ -1,0 +1,23 @@
+id = "io.github.example.hello"
+name = "Hello"
+description = "Return a greeting from a sandboxed module."
+author = "example"
+version = "0.1.0"
+api_version = "^1.0"
+license = "MIT"
+source = "https://github.com/example/rayslash-module-hello"
+icon = "icon.svg"
+kind = "wasm"
+
+[permissions]
+network = []
+cache = false
+clipboard = false
+notifications = false
+commands = false
+
+[[providers]]
+id = "hello"
+name = "Hello"
+description = "Return a greeting."
+triggers = ["hello"]
