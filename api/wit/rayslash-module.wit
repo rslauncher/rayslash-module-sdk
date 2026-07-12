@@ -17,6 +17,7 @@ interface types {
     variant action {
         copy-text(string),
         open-url(string),
+        open-path(string),
         show-message(string),
         notify(tuple<string, string>),
         run-approved-command(list<string>),

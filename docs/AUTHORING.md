@@ -30,6 +30,8 @@ Declarative modules contain data only. WASM modules implement `api/wit/rayslash-
 
 Declare only what the module needs. Network entries are exact HTTPS origins. Permission expansion during an update requires user confirmation. Command execution is high risk, typed, explicit-activation-only, and never evaluated by a shell.
 
+`open-url` and `open-path` are typed activation requests executed by the launcher after selection. They are not query-time network or filesystem access. `open-path` accepts only a user-configured path supplied through validated module settings; executable modules cannot inspect that path themselves.
+
 ## Stable IDs and results
 
 Module IDs never change after publication. Provider IDs are stable within a module. Result IDs must identify the same logical item across queries so local learned ranking remains useful.
