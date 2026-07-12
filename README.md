@@ -3,6 +3,8 @@
 This repository is the source of truth for rayslash module API v1, manifest validation, deterministic packaging, schemas, templates, and author documentation.
 
 - [Authoring guide](docs/AUTHORING.md)
+- [API v1 reference](docs/API.md)
+- [Release and submission guide](docs/RELEASING.md)
 - [WIT API](api/wit/rayslash-module.wit)
 - [Manifest schema](schemas/module.schema.json)
 
@@ -14,5 +16,4 @@ cargo clippy --workspace --all-targets -- -D warnings
 cargo test --workspace
 ```
 
-The public API remains a development preview until the host and conformance suite are released together.
-
+API v1 is stable. Compatible additions remain within v1; breaking WIT, manifest, or behavior changes require API v2.
