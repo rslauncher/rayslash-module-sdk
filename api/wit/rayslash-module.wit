@@ -5,6 +5,7 @@ interface types {
         query: string,
         max-results: u32,
         locale: option<string>,
+        settings-json: string,
     }
 
     variant icon {
@@ -74,4 +75,3 @@ world module {
     import host;
     export provider;
 }
-
