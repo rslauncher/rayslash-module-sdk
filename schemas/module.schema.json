@@ -16,7 +16,7 @@
     "source": { "type": "string", "pattern": "^https://github\\.com/[^/?#]+/[^/?#]+$" },
     "homepage": { "type": "string" },
     "icon": { "type": "string" },
-    "kind": { "enum": ["declarative", "wasm"] },
+    "kind": { "const": "wasm" },
     "permissions": {
       "type": "object",
       "additionalProperties": false,
@@ -45,4 +45,3 @@
     }
   }
 }
-

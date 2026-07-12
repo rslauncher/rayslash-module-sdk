@@ -1,0 +1,1 @@
+/home/rayan/Documents/Projects/rslauncher-modules/rayslash-module-sdk/templates/wasm/target/wasm32-unknown-unknown/release/rayslash_module_example.wasm: /home/rayan/Documents/Projects/rslauncher-modules/rayslash-module-sdk/templates/wasm/src/bindings.rs /home/rayan/Documents/Projects/rslauncher-modules/rayslash-module-sdk/templates/wasm/src/lib.rs

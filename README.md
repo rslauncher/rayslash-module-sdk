@@ -2,6 +2,8 @@
 
 This repository is the source of truth for rayslash module API v1, manifest validation, deterministic packaging, schemas, templates, and author documentation.
 
+API v1 accepts sandboxed WASM packages. The `declarative` kind is reserved and is not installable until a future API defines its format and runtime behavior.
+
 - [Authoring guide](docs/AUTHORING.md)
 - [API v1 reference](docs/API.md)
 - [Release and submission guide](docs/RELEASING.md)

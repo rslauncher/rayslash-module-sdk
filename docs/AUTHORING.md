@@ -2,7 +2,7 @@
 
 ## Quick start
 
-1. Copy the closest template from `templates/` into a new public GitHub repository.
+1. Copy `templates/wasm/` into a new public GitHub repository.
 2. Choose a globally unique reverse-DNS module ID. Community modules cannot use `rayslash.*` or author `rayslash`.
 3. Complete `module.toml`, `README.md`, `LICENSE`, and the local icon.
 4. Validate locally:
@@ -20,7 +20,9 @@
 6. Publish the `.tar.zst` and `.sha256` files as immutable GitHub Release assets.
 7. Submit the repository through a pull request to `rslauncher/rayslash-registry`.
 
-Declarative modules contain data only. WASM modules implement `api/wit/rayslash-module.wit` and receive no WASI filesystem, process, or network API. Network/cache operations go through declared host capabilities.
+API v1 supports WASM modules. They implement `api/wit/rayslash-module.wit` and receive no WASI filesystem, process, or network API. Network/cache operations go through declared host capabilities. The `declarative` manifest value is reserved for a possible later API and is rejected by the v1 validator and registry.
+
+The template README contains the exact build, binding-generation, local-validation, packaging, and release steps. Keep its WIT file synchronized with a released SDK API; do not edit the contract locally.
 
 ## Compatibility
 

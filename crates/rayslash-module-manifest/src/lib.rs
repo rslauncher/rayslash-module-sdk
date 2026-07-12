@@ -103,6 +103,12 @@ impl ModuleManifest {
     }
 
     pub fn validate(&self, allow_official: bool) -> Result<(), ManifestError> {
+        if self.kind == ModuleKind::Declarative {
+            return Err(ManifestError::Invalid(
+                "declarative packages are reserved for a future API; API v1 modules must use kind = \"wasm\""
+                    .into(),
+            ));
+        }
         validate_module_id(&self.id)?;
         if !allow_official
             && (self.id.starts_with("rayslash.") || self.author.eq_ignore_ascii_case("rayslash"))
@@ -234,7 +240,7 @@ api_version = "^1.0"
 license = "MIT"
 source = "https://github.com/example/docs"
 icon = "icon.svg"
-kind = "declarative"
+kind = "wasm"
 
 [permissions]
 network = ["https://docs.example.com"]
