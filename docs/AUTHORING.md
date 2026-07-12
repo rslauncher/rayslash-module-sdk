@@ -34,3 +34,6 @@ Declare only what the module needs. Network entries are exact HTTPS origins. Per
 
 Module IDs never change after publication. Provider IDs are stable within a module. Result IDs must identify the same logical item across queries so local learned ranking remains useful.
 
+## Settings
+
+The launcher owns settings storage and passes the module's validated settings object to each query as UTF-8 JSON in `query-context.settings-json`. Modules must treat missing fields as defaults and reject invalid values without panicking. Settings never grant permissions; permissions remain a separate install/update decision.
