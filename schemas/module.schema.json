@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rslauncher.github.io/rayslash-registry/schemas/module-v1.json",
+  "title": "rayslash module manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "description", "author", "version", "api_version", "license", "source", "icon", "kind", "providers"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+$", "maxLength": 128 },
+    "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "description": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "author": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "version": { "type": "string" },
+    "api_version": { "type": "string" },
+    "license": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "source": { "type": "string", "pattern": "^https://github\\.com/[^/?#]+/[^/?#]+$" },
+    "homepage": { "type": "string" },
+    "icon": { "type": "string" },
+    "kind": { "enum": ["declarative", "wasm"] },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "network": { "type": "array", "items": { "type": "string", "pattern": "^https://[^/?#]+$" }, "uniqueItems": true },
+        "cache": { "type": "boolean" },
+        "clipboard": { "type": "boolean" },
+        "notifications": { "type": "boolean" },
+        "commands": { "type": "boolean" }
+      }
+    },
+    "providers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "description"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$", "maxLength": 64 },
+          "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+          "description": { "type": "string", "minLength": 1, "maxLength": 200 },
+          "triggers": { "type": "array", "items": { "type": "string", "minLength": 1, "maxLength": 40 }, "uniqueItems": true }
+        }
+      }
+    }
+  }
+}
+

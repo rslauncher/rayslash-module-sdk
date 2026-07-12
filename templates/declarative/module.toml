@@ -1,0 +1,24 @@
+id = "io.github.example.docs"
+name = "Docs Search"
+description = "Search project documentation."
+author = "example"
+version = "0.1.0"
+api_version = "^1.0"
+license = "MIT"
+source = "https://github.com/example/rayslash-docs-search"
+icon = "icon.svg"
+kind = "declarative"
+
+[permissions]
+network = []
+cache = false
+clipboard = false
+notifications = false
+commands = false
+
+[[providers]]
+id = "docs"
+name = "Docs"
+description = "Search documentation."
+triggers = ["docs"]
+

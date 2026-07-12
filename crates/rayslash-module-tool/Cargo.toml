@@ -1,0 +1,24 @@
+[package]
+name = "rayslash-module-tool"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[[bin]]
+name = "rayslash-module"
+path = "src/main.rs"
+
+[dependencies]
+base64.workspace = true
+clap.workspace = true
+ed25519-dalek.workspace = true
+rand.workspace = true
+rayslash-module-manifest = { path = "../rayslash-module-manifest" }
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+tar.workspace = true
+walkdir.workspace = true
+zstd.workspace = true
+
