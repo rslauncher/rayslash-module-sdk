@@ -32,6 +32,10 @@ Declare only what the module needs. Network entries are exact HTTPS origins. Per
 
 `open-url` and `open-path` are typed activation requests executed by the launcher after selection. They are not query-time network or filesystem access. `open-path` accepts only a user-configured path supplied through validated module settings; executable modules cannot inspect that path themselves.
 
+Timed behavior uses `schedule-notification` or `schedule-command`. The launcher owns the timer and executes only after explicit result activation. Modules must never implement delays by blocking a query or invoking a shell.
+
+`host.unix-time` returns the current Unix timestamp in whole seconds. It is the only clock exposed to modules; use it for time calculations without depending on WASI or blocking the query.
+
 ## Stable IDs and results
 
 Module IDs never change after publication. Provider IDs are stable within a module. Result IDs must identify the same logical item across queries so local learned ranking remains useful.
