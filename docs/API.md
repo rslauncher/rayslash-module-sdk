@@ -4,7 +4,7 @@ The canonical contract is [`api/wit/rayslash-module.wit`](../api/wit/rayslash-mo
 
 ## Query contract
 
-`query-context` contains the current UTF-8 query, a result limit from 1 through 100, an optional locale, and module settings serialized as JSON. Queries must return promptly, must not implement their own delay, and should return an empty non-exclusive response when they do not match.
+`query-context` contains the current UTF-8 query, a result limit from 1 through 100, an optional locale, and launcher-managed module settings serialized as JSON. Community modules must currently work with `{}` because API v1 has no generic community settings form. Queries must return promptly, must not implement their own delay, and should return an empty non-exclusive response when they do not match.
 
 Each result has a stable module-local ID, title, subtitle, optional score, icon, and one typed action. `exclusive = true` suppresses core Apps/Folders results for that query. Text and result counts are bounded again by the host and launcher.
 

@@ -2,23 +2,37 @@
 
 ## Quick start
 
-1. Copy `templates/wasm/` into a new public GitHub repository.
+Start from the immutable SDK release and copy the template into an empty working directory:
+
+```sh
+git clone --depth 1 --branch v1.0.1 https://github.com/rslauncher/rayslash-module-sdk.git
+mkdir my-rayslash-module
+cp -a rayslash-module-sdk/templates/wasm/. my-rayslash-module/
+cd my-rayslash-module
+```
+
+Then:
+
+1. Create a new public GitHub repository for this directory.
 2. Choose a globally unique reverse-DNS module ID. Community modules cannot use `rayslash.*` or author `rayslash`.
 3. Complete `module.toml`, `README.md`, `LICENSE`, and the local icon.
-4. Validate locally:
+4. Follow the checked-in template README's build/test commands, then copy the release component to `module.wasm` beside `module.toml`.
+5. Validate locally:
 
    ```sh
-   cargo run -p rayslash-module-tool -- validate /path/to/module
+   cargo run --manifest-path ../rayslash-module-sdk/Cargo.toml \
+     -p rayslash-module-tool --locked -- validate .
    ```
 
-5. Package locally:
+6. Package locally:
 
    ```sh
-   cargo run -p rayslash-module-tool -- package /path/to/module
+   cargo run --manifest-path ../rayslash-module-sdk/Cargo.toml \
+     -p rayslash-module-tool --locked -- package .
    ```
 
-6. Publish the `.tar.zst` and `.sha256` files as immutable GitHub Release assets.
-7. Submit the repository through a pull request to `rslauncher/rayslash-registry`.
+7. Publish the `.tar.zst` and `.sha256` files as immutable GitHub Release assets.
+8. Submit the repository through a pull request to `rslauncher/rayslash-registry`.
 
 API v1 supports WASM modules. They implement `api/wit/rayslash-module.wit` and receive no WASI filesystem, process, or network API. Network/cache operations go through declared host capabilities. The `declarative` manifest value is reserved for a possible later API and is rejected by the v1 validator and registry.
 
@@ -44,4 +58,4 @@ Module IDs never change after publication. Provider IDs are stable within a modu
 
 ## Settings
 
-The launcher owns settings storage and passes the module's validated settings object to each query as UTF-8 JSON in `query-context.settings-json`. Modules must treat missing fields as defaults and reject invalid values without panicking. Settings never grant permissions; permissions remain a separate install/update decision.
+The launcher owns settings storage and passes any launcher-managed settings object to each query as UTF-8 JSON in `query-context.settings-json`. Modules must treat `{}`, missing fields, and invalid values as safe defaults and must not panic. API v1 does not define a community-module settings schema or generic settings form yet, so a community module must remain useful with `{}`. Settings never grant permissions; permissions remain a separate install/update decision.
